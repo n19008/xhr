@@ -12,7 +12,8 @@ class App extends React.Component {
             formTxt : ''
         }
     }
-    componentDidMount() {
+
+    handleClick = () => {
         fetch(url)
             .then((res) => {
                 //this.setState({
@@ -52,7 +53,8 @@ class App extends React.Component {
         }
         return (
             <div>
-                <img src ={JSON.stringify(ur)} alt =''/>
+                <button onClick = {this.handleClick}>wa-i</button>
+                <p>{ur}</p>
             </div>
         )
 
