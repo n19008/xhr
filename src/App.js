@@ -7,8 +7,8 @@ class App extends React.Component {
         super(props)
         this.state = {
             //isLoading: false
-            images : '',
-            data1 : {},
+            images : '' ,
+            data1 : null,
             formTxt : ''
         }
     }
@@ -24,18 +24,18 @@ class App extends React.Component {
             .then((data) => {
                 //オブジェクトがreslut
                 //console.log(data['result'][0])
-                const v = data['result'][0]
-                console.log(v['recipeDescription'])
+                //const v = data['result'][0]
+                //console.log(v['recipeDescription'])
                 //画像パス
-                const image = v['foodImageUrl']
-                //console.log(image)
-                this.state = {
-                    images : image,
-                    //data1 : JSON.stringify(v)
-                    data1 : v
-                }
-                console.log(this.state.data1)
-                //console.log(this.state.images)
+                //const image = v['foodImageUrl']
+                console.log(data)
+                this.setState ({
+                    // images : image,
+                    data1 : data
+                    // data1 : v
+                })
+                console.log(JSON.stringify(this.state.data1['result'][0]['foodImageUrl']))
+                //   console.log(this.state.images)
             })
         //   .catch((err) => {
         //       console.log(err)
@@ -46,9 +46,13 @@ class App extends React.Component {
         //if (this.isLoading) {
         //return <p>loading...</p>
         //}
+        var ur = ''
+        if (this.state.data1 != null) {
+            ur = this.state.data1['result'][0]['foodImageUrl']
+        }
         return (
             <div>
-                <p>{this.state.data1}</p>
+                <img src ={JSON.stringify(ur)} alt =''/>
             </div>
         )
 
