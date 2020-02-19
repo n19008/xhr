@@ -37,7 +37,7 @@ class App extends React.Component {
       return (
           <div>
           <button onClick = {this.handleClick}>wa-i</button>
-          <p>{url}</p>
+          <img src ={url} alr='' />
           </div>
       )
   }
