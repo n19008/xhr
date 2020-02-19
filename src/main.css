@@ -1,0 +1,12 @@
+@charset "utf-8"
+html {
+height: 100%
+}
+.imagesource {
+width:50px;
+heigth: 50px;
+}
+
+img {
+    width: 100%;
+}
