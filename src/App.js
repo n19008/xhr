@@ -1,6 +1,6 @@
 import React from 'react'
 import './main.css'
-//import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 const url = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&formatVersion=1&applicationId=1025199417506477360"
 
 class App extends React.Component {
@@ -51,17 +51,22 @@ class App extends React.Component {
         //}
         const {foodImageUrl, recipeDescription, recipeTitle, recipeUrl} = this.state.valuedata
         return (
-            <div>
-                <div className='imagesource'>
-                    <button onClick = {this.handleClick}>{this.state.menu}</button>
-                    <p>{recipeTitle}</p>
-                    <img src={foodImageUrl} alt='' />
+            <div className='test'>
+                <div className='button1'>
+                    {recipeUrl ? '': <button onClick = {this.handleClick}>{this.state.menu}</button>}
                 </div>
-                <div className='listRender'>
-                    {recipeDescription ? <li>{recipeDescription}</li>: ''}
-                    {recipeUrl ? <li>{recipeUrl}</li>: ''}
-
+                <div className='info'>
+                    <a href={recipeUrl}>{recipeTitle}</a>
+                    <div className='imagesource'>
+                        <img src={foodImageUrl} alt='' />
+                    </div>
+                    <div className='listRender'>
+                        {recipeDescription ? <li>{recipeDescription}</li>: ''}
+                    </div>
                 </div>
+                <div className="button2">
+                {recipeUrl ? <button onClick = {this.handleClick}>{this.state.menu}</button>: ''}
+            </div>
             </div>
         )
 
