@@ -2,11 +2,16 @@
 html {
 height: 100%
 }
-.imagesource {
-width:50px;
-heigth: 50px;
-}
-
 img {
     width: 100%;
+}
+.imagesource {
+width:300px;
+heigth: 500px;
+float: left;
+}
+
+.name {
+    float:left;
+    color:red;
 }

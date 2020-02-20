@@ -8,6 +8,10 @@ class App extends React.Component {
         super(props)
         this.state = {
             data1 : null,
+            index1 : 0,
+            valuedata : {},
+            images : {},
+            menu : '次のメニュー',
         }
     }
 
@@ -18,10 +22,22 @@ class App extends React.Component {
             })
             .then((data) => {
                 console.log(data)
-                this.setState ({
-                    data1 : data
-                })
-                console.log(JSON.stringify(this.state.data1['result'][0]['foodImageUrl']))
+                if(this.state.index1 < 3) {
+                    this.setState ({
+                        data1 : data,
+                        valuedata: data['result'][this.state.index1],
+                        images : this.state.valuedata,
+                        index1 : this.state.index1 += 1
+                    })
+                    console.log(this.state.valuedata)
+                    console.log(this.state.images)
+                }else {
+                    this.setState({
+                        menu : '最後のメニューです'
+                    })}
+                    //console.log(this.state.index1)
+                    //console.log(this.state.valuedata)
+                    //console.log(JSON.stringify(this.state.data1['result'][0]['foodImageUrl']))
                 //   console.log(this.state.images)
             })
            .catch((err) => {
@@ -34,13 +50,20 @@ class App extends React.Component {
         //return <p>loading...</p>
         //}
         var ur = ''
+        var name = ''
         if (this.state.data1 != null) {
-            ur = this.state.data1['result'][0]['foodImageUrl']
+           ur = this.state.valuedata['foodImageUrl']
+            name = this.state.valuedata['recipeDescription']
         }
         return (
-            <div className='imagesource'>
-                <button onClick = {this.handleClick}>wa-i</button>
-                <img src = {ur} alt=''/>
+            <div>
+                <div className='imagesource'>
+                    <button onClick = {this.handleClick}>{this.state.menu}</button>
+                    <img src={ur} alt='' />
+                    <div className='name'>
+                        <p>{name}</p>
+                    </div>
+                </div>
             </div>
         )
 
