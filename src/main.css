@@ -7,11 +7,15 @@ img {
 }
 .imagesource {
 width:300px;
-heigth: 500px;
+height: 400px;
 float: left;
 }
 
-.name {
-    float:left;
-    color:red;
+.listRender {
+    padding: 120px 0px 0px 10px;
+    margin: 0px;
+    width: 500px;
+    height: 400px;
+    float: left;
+
 }

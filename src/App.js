@@ -11,7 +11,7 @@ class App extends React.Component {
             index1 : 0,
             valuedata : {},
             images : {},
-            menu : '次のメニュー',
+            menu : 'メニューを表示する'
         }
     }
 
@@ -22,19 +22,19 @@ class App extends React.Component {
             })
             .then((data) => {
                 console.log(data)
-                if(this.state.index1 < 3) {
+                if(this.state.index1 < 4) {
                     this.setState ({
-                        data1 : data,
                         valuedata: data['result'][this.state.index1],
-                        images : this.state.valuedata,
-                        index1 : this.state.index1 += 1
+                        //images: data['result'][this.state.index1]['foodImageUrl'],
+                        index1 : this.state.index1 += 1,
+                        menu : '次のメニュー'
                     })
+                    if(this.state.index1 === 4) {
+                        this.setState({
+                            menu : '最後のメニューです'
+                        })}
                     console.log(this.state.valuedata)
-                    console.log(this.state.images)
-                }else {
-                    this.setState({
-                        menu : '最後のメニューです'
-                    })}
+                }
                     //console.log(this.state.index1)
                     //console.log(this.state.valuedata)
                     //console.log(JSON.stringify(this.state.data1['result'][0]['foodImageUrl']))
@@ -49,20 +49,18 @@ class App extends React.Component {
         //if (this.isLoading) {
         //return <p>loading...</p>
         //}
-        var ur = ''
-        var name = ''
-        if (this.state.data1 != null) {
-           ur = this.state.valuedata['foodImageUrl']
-            name = this.state.valuedata['recipeDescription']
-        }
+        const {foodImageUrl, recipeDescription, recipeTitle, recipeUrl} = this.state.valuedata
         return (
             <div>
                 <div className='imagesource'>
                     <button onClick = {this.handleClick}>{this.state.menu}</button>
-                    <img src={ur} alt='' />
-                    <div className='name'>
-                        <p>{name}</p>
-                    </div>
+                    <p>{recipeTitle}</p>
+                    <img src={foodImageUrl} alt='' />
+                </div>
+                <div className='listRender'>
+                    {recipeDescription ? <li>{recipeDescription}</li>: ''}
+                    {recipeUrl ? <li>{recipeUrl}</li>: ''}
+
                 </div>
             </div>
         )
