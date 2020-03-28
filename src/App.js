@@ -1,6 +1,6 @@
 import React from 'react'
 //import ReactDOM from 'react-dom'
-const url = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&formatVersion=1&applicationId=1025199417506477360"
+const url = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&formatVersion=1&applicationId=???"
 
 class App extends React.Component {
     constructor (props) {
