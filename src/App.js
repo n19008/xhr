@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 //import ReactDOM from 'react-dom'
-const url = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&formatVersion=1&applicationId=1025199417506477360"
+const url = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&formatVersion=1&applicationId=???"
 const url2 = 'https://holidays-jp.github.io/api/v1/date.json'
 class App extends React.Component {
   constructor (props) {
