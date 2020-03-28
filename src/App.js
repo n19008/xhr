@@ -1,6 +1,7 @@
 import React from 'react'
 //import ReactDOM from 'react-dom'
-const url = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&formatVersion=1&applicationId=1025199417506477360"
+const url = "https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?format=json&formatVersion=1&applicationId=???"
+ const url1 = 'https://holidays-jp.github.io/api/v1/date.json'
 
 class App extends React.Component {
     constructor (props) {
@@ -13,7 +14,7 @@ class App extends React.Component {
         }
     }
     componentDidMount() {
-        fetch(url)
+        fetch(url1)
             .then((res) => {
                 //this.setState({
                 //isLoding : true
@@ -29,12 +30,14 @@ class App extends React.Component {
                 //画像パス
                 //const image = v['foodImageUrl']
                 console.log(data)
+                var d = new Date()
+                var year = d.getFullYear()
+                console.log(year)
                 this.setState ({
                     // images : image,
                     data1 : data
                     // data1 : v
                 })
-                console.log(JSON.stringify(this.state.data1['result'][0]['foodImageUrl']))
                 //   console.log(this.state.images)
             })
         //   .catch((err) => {
@@ -46,13 +49,8 @@ class App extends React.Component {
         //if (this.isLoading) {
         //return <p>loading...</p>
         //}
-        var ur = ''
-        if (this.state.data1 != null) {
-            ur = this.state.data1['result'][0]['foodImageUrl']
-        }
         return (
             <div>
-                <img src ={JSON.stringify(ur)} alt =''/>
             </div>
         )
 
